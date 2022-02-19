@@ -2,7 +2,7 @@ from typing import Optional
 
 from url.alias_util import AliasUtil
 from url.entry import UrlEntry
-from url.exception import AliasAlreadyTakenError
+from exception import AliasAlreadyTakenError
 from url.repository import UrlRepository
 
 

@@ -9,5 +9,6 @@ class InvalidUrlError(ValueError):
 class InvalidAliasError(ValueError):
     pass
 
+
 class InvalidAliasLengthError(ValueError):
     pass

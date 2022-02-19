@@ -1,13 +1,14 @@
 import validators
 
-from url.exception import InvalidUrlError
+from exception import InvalidUrlError
 
 
 class UrlUtil:
 
     @staticmethod
     def validate_url(url: str) -> None:
-        try:
-            validators.url(url)
-        except validators.ValidationFailure:
-            raise InvalidUrlError("Invalid URL")
+        success = validators.url(url)
+        if isinstance(success, bool) and success:
+            return None
+
+        raise InvalidUrlError("Invalid URL")

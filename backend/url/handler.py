@@ -14,7 +14,7 @@ class UrlHandler:
     def get_url(self, alias: str) -> Optional[UrlEntry]:
         return self._interface.get_url(alias)
 
-    def add_url(self, url: str, alias: Optional[str]) -> UrlEntry:
+    def add_url(self, url: str, alias: Optional[str] = None) -> UrlEntry:
         url = url.strip()
         UrlUtil.validate_url(url)
         if alias:

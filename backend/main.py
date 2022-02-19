@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 
 import error_codes
-from url.exception import InvalidUrlError, InvalidAliasLengthError, InvalidAliasError, AliasAlreadyTakenError
+from exception import InvalidUrlError, InvalidAliasLengthError, InvalidAliasError, AliasAlreadyTakenError
 from url.handler import UrlHandler
-from url.handler_dto import PostAliasRequest, GetAliasResponse
+from responses import PostAliasRequest, GetAliasResponse
 from url.interface import UrlInterface
 from url.repository import UrlRepository
 
@@ -36,7 +36,7 @@ def start():
     @app.post("/v1/url")
     def post_alias(request: PostAliasRequest):
         try:
-            return url_handler.add_url(alias=request.alias, url=request.url)
+            return url_handler.add_url(url=request.url, alias=request.alias)
         except InvalidUrlError:
             raise error_codes.INVALID_URL_PROVIDED
         except InvalidAliasLengthError:
