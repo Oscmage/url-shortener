@@ -6,10 +6,25 @@ from app.exception import InvalidUrlError, InvalidAliasLengthError, InvalidAlias
 from app.responses import PostAliasRequest, GetAliasResponse, PostAliasResponse
 from app.url.interface import UrlInterface
 from app.url.repository import UrlRepository
+from fastapi.middleware.cors import CORSMiddleware
+
+CORS_ORIGINS = [
+    "http://localhost",
+    "http://localhost:3000",
+    "http://localhost:8080",
+]
 
 
 def start():
     app = FastAPI()
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=CORS_ORIGINS,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
     url_repo = UrlRepository()
     url_interface = UrlInterface(
         url_repo
@@ -39,12 +54,16 @@ def start():
             url_entry = url_handler.add_url(url=request.url, alias=request.alias)
             return PostAliasResponse.from_url_entry(url_entry)
         except InvalidUrlError:
+            print("invalid url")
             raise error_codes.INVALID_URL_PROVIDED
         except InvalidAliasLengthError:
+            print("invalid alias length")
             raise error_codes.INVALID_ALIAS_LENGTH_PROVIDED
         except InvalidAliasError:
+            print("invalid alias")
             raise error_codes.INVALID_ALIAS_PROVIDED
         except AliasAlreadyTakenError:
+            print("Alias taken")
             raise error_codes.ALIAS_ALREADY_TAKEN
         except Exception as e:
             print(e)

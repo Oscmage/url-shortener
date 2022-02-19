@@ -3,26 +3,39 @@
 import React, { FC } from 'react';
 
 interface ResultProps {
-  success: boolean;
+  success: boolean | null;
   error: string | null;
   url: string | null;
   alias: string | null;
 }
 
 const ResultDialog: FC<ResultProps> = ({ success, error, url, alias }) => {
-  if (success) {
+  if (success == null) {
+    return (<></>);
+  }
+  if (success && url) {
     return (
-      <div>
+      <div className="success-dialog">
+        <div>
           <label>Success!</label>
+        </div>
+        <div>
           <label>Alias: {alias}</label>
-          <label>Url: {url}</label>
+        </div>
+        <div>
+          <label>Url: <a href={url}>{url}</a></label>
+        </div>
       </div>
     )
   } else {
     return (
-      <div>
+      <div className="success-dialog">
+        <div>
           <label>Failure :(</label>
+        </div>
+        <div>
           <label>Error: {error}</label>
+        </div>
       </div>
     )
   }

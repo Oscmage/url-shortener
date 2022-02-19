@@ -1,13 +1,10 @@
 import React from 'react';
 import InputField from './Input';
-import axios from "axios";
-import { CREATE_ALIAS_URL } from './Constants';
-//import "./CreateMonitoring.css";
+import "./Form.css";
 
-import { CreateAliasRequest, CreateAliasResponse } from './Client';
+import { CreateAlias, CreateAliasResponse } from './Client';
 
 interface AddAliasState {
-    formDisabled: boolean;
     alias: string;
     aliasError: string;
     url: string;
@@ -15,8 +12,12 @@ interface AddAliasState {
     success: boolean;
 }
 
+interface AddAliasProps {
+    create: CreateAlias
+    disabled: boolean
+}
+
 const initialState = {
-    formDisabled: false,
     alias: "",
     aliasError: "",
     url: "",
@@ -24,18 +25,18 @@ const initialState = {
     success: false,
 };
 
-export class AddAlias extends React.Component<CreateAliasRequest, AddAliasState> {
+export class Form extends React.Component<AddAliasProps, AddAliasState> {
   constructor(props: any) {
     super(props);
     this.state = initialState
   }
 
   render() {
-    const errorExists = this.state.urlError !== "" || this.state.aliasError !== ""
+    const errorExists = this.state.urlError !== "" || this.state.aliasError !== "" || this.state.url === ""
     
     return (
         <div className="form-wrapper">
-            <fieldset disabled={this.state.formDisabled}>
+            <fieldset disabled={this.props.disabled}>
                 <form onSubmit={this.handleSubmit}>
                     <div className="alias-wrapper">
                         {<InputField placedholder="alias" value={this.state.alias} onChange={this.handleInputChangeAlias} errorMessage={this.state.aliasError}/>}
@@ -89,38 +90,21 @@ export class AddAlias extends React.Component<CreateAliasRequest, AddAliasState>
   }
 
   validateUrl = (url: string) => {
-    let res
     if (url === "") {
         return ""
     }
     try {
-        res = new URL(url);
+        new URL(url);
         return ""
       } catch (_) {
         return "Not a valid url";  
       }
   }
 
-
-
   handleSubmit = async (event: any) => {
     event.preventDefault();
-    this.setState({
-        formDisabled: true
-    });
-
     const response: CreateAliasResponse = await this.props.create(this.state.url, this.state.alias);
-    if (response.success) {
-        console.log("Success!")
-        console.log(response.alias)
-        console.log(response.url)
-        this.setState({
-            success: true
-        })
-    } else {
-        console.log("Failure!")
-    }
-    //this.setState(initialState);
+    this.setState(initialState);
   };
 
   

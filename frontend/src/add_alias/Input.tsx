@@ -1,6 +1,6 @@
 
 
-import React, { FC } from 'react';
+import { FC } from 'react';
 import ErrorDialog from './ErrorDialog';
 
 interface InputProps {
@@ -12,13 +12,14 @@ interface InputProps {
 
 const InputField: FC<InputProps> = ({ placedholder, value, onChange, errorMessage }) => {
   return (
-    <>
+      <div className="input-wrapper">
         <input placeholder={placedholder} 
-              value={value}
-              onChange={onChange}></input>
-              
-              { <ErrorDialog msg={errorMessage}/>}
-    </>
+            value={value}
+            onChange={onChange}>
+        </input>
+        { <ErrorDialog msg={errorMessage}/>}
+
+      </div>
   );
 };
 
