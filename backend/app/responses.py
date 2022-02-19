@@ -1,7 +1,7 @@
 import dataclasses
 from typing import Optional
 
-from url.entry import UrlEntry
+from app.url.entry import UrlEntry
 
 
 @dataclasses.dataclass

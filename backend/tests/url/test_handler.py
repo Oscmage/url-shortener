@@ -1,10 +1,10 @@
 from unittest import TestCase
 
-import exception
-from url.alias_util import AliasUtil
-from url.handler import UrlHandler
-from url.interface import UrlInterface
-from url.repository import UrlRepository
+from app import exception
+from app.url.interface import UrlInterface
+from app.url.repository import UrlRepository
+from app.url.handler import UrlHandler
+from app.url.alias_util import AliasUtil
 
 
 class TestUrlHandler(TestCase):

@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from exception import InvalidUrlError
-from url.url_util import UrlUtil
+from app.exception import InvalidUrlError
+from app.url.url_util import UrlUtil
 
 
 class TestUrlUtil(TestCase):

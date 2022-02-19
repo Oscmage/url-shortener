@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 
-import error_codes
-from exception import InvalidUrlError, InvalidAliasLengthError, InvalidAliasError, AliasAlreadyTakenError
-from url.handler import UrlHandler
-from responses import PostAliasRequest, GetAliasResponse
-from url.interface import UrlInterface
-from url.repository import UrlRepository
+import app.error_codes as error_codes
+from app.url.handler import UrlHandler
+from app.exception import InvalidUrlError, InvalidAliasLengthError, InvalidAliasError, AliasAlreadyTakenError
+from app.responses import PostAliasRequest, GetAliasResponse
+from app.url.interface import UrlInterface
+from app.url.repository import UrlRepository
 
 
 def start():

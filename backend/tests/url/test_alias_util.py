@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from url.alias_util import AliasUtil
+from app.url.alias_util import AliasUtil
 
 
 class TestAliasUtil(TestCase):

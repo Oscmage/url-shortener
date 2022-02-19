@@ -1,6 +1,6 @@
 from typing import Dict, Optional
 
-from url.entry import UrlEntry
+from app.url.entry import UrlEntry
 
 
 class UrlRepository:

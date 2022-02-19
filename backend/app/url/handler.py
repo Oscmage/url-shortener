@@ -1,9 +1,9 @@
 from typing import Optional
 
-from url.alias_util import AliasUtil
-from url.entry import UrlEntry
-from url.interface import UrlInterface
-from url.url_util import UrlUtil
+from app.url.alias_util import AliasUtil
+from app.url.entry import UrlEntry
+from app.url.interface import UrlInterface
+from app.url.url_util import UrlUtil
 
 
 class UrlHandler:

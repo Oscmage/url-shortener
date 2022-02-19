@@ -1,7 +1,7 @@
 import random
 import string
 
-from exception import InvalidAliasLengthError, InvalidAliasError
+from app.exception import InvalidAliasLengthError, InvalidAliasError
 
 
 class AliasUtil:

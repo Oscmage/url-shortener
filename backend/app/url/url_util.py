@@ -1,6 +1,6 @@
 import validators
 
-from exception import InvalidUrlError
+from app.exception import InvalidUrlError
 
 
 class UrlUtil:
