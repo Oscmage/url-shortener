@@ -1,6 +1,6 @@
 
 
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 interface ResultProps {
   success: boolean | null;
