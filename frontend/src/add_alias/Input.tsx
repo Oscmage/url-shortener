@@ -1,25 +1,28 @@
-
-
-import { FC } from 'react';
-import ErrorDialog from './ErrorDialog';
+import { FC } from "react";
+import ErrorDialog from "./ErrorDialog";
 
 interface InputProps {
-  placedholder: string
+  placedholder: string;
   value: string;
-  onChange: any;  // TODO: fix type
+  onChange: any; // TODO: fix type
   errorMessage: string;
 }
 
-const InputField: FC<InputProps> = ({ placedholder, value, onChange, errorMessage }) => {
+const InputField: FC<InputProps> = ({
+  placedholder,
+  value,
+  onChange,
+  errorMessage,
+}) => {
   return (
-      <div className="input-wrapper">
-        <input placeholder={placedholder} 
-            value={value}
-            onChange={onChange}>
-        </input>
-        { <ErrorDialog msg={errorMessage}/>}
-
-      </div>
+    <div className="input-wrapper">
+      <input
+        placeholder={placedholder}
+        value={value}
+        onChange={onChange}
+      ></input>
+      {<ErrorDialog msg={errorMessage} />}
+    </div>
   );
 };
 

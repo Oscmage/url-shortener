@@ -1,6 +1,4 @@
-
-
-import { FC } from 'react';
+import { FC } from "react";
 
 interface ResultProps {
   success: boolean | null;
@@ -11,7 +9,7 @@ interface ResultProps {
 
 const ResultDialog: FC<ResultProps> = ({ success, error, url, alias }) => {
   if (success == null) {
-    return (<></>);
+    return <></>;
   }
   if (success && url) {
     return (
@@ -23,10 +21,12 @@ const ResultDialog: FC<ResultProps> = ({ success, error, url, alias }) => {
           <label>Alias: {alias}</label>
         </div>
         <div>
-          <label>Url: <a href={url}>{url}</a></label>
+          <label>
+            Url: <a href={url}>{url}</a>
+          </label>
         </div>
       </div>
-    )
+    );
   } else {
     return (
       <div className="success-dialog">
@@ -37,7 +37,7 @@ const ResultDialog: FC<ResultProps> = ({ success, error, url, alias }) => {
           <label>Error: {error}</label>
         </div>
       </div>
-    )
+    );
   }
 };
 

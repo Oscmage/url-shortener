@@ -1,6 +1,4 @@
-
-
-import { FC } from 'react';
+import { FC } from "react";
 import "./ErrorDialog.css";
 
 interface ErrorProps {
@@ -13,7 +11,7 @@ const ErrorDialog: FC<ErrorProps> = ({ msg }) => {
       <div className="error-dialog">
         <label>{msg}</label>
       </div>
-    )    
+    );
   }
   return null;
 };

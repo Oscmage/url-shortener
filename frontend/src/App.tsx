@@ -1,16 +1,15 @@
-
-import React from 'react';
-import { Form } from './add_alias/Form';
-import { addAlias, CreateAlias, CreateAliasResponse } from './add_alias/Client';
-import ResultDialog from './add_alias/ResultDialog';
-import './App.css';
+import React from "react";
+import { Form } from "./add_alias/Form";
+import { addAlias, CreateAlias, CreateAliasResponse } from "./add_alias/Client";
+import ResultDialog from "./add_alias/ResultDialog";
+import "./App.css";
 
 const initialAppState = {
   success: null,
   error: null,
   url: null,
   alias: null,
-  formDisabled: false
+  formDisabled: false,
 };
 
 interface AppState {
@@ -18,59 +17,59 @@ interface AppState {
   error: string | null;
   url: string | null;
   alias: string | null;
-  formDisabled: boolean
+  formDisabled: boolean;
 }
 
 export class App extends React.Component<{}, AppState> {
-
   constructor(props: any) {
     super(props);
-    this.state = initialAppState
+    this.state = initialAppState;
   }
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <Form create={this.addAliasWrapper} disabled={this.state.formDisabled}/>
-          <ResultDialog 
-            success={this.state.success} 
-            error={this.state.error} 
-            url={this.state.url} 
-            alias={this.state.alias} 
+          <Form
+            create={this.addAliasWrapper}
+            disabled={this.state.formDisabled}
+          />
+          <ResultDialog
+            success={this.state.success}
+            error={this.state.error}
+            url={this.state.url}
+            alias={this.state.alias}
           />
         </header>
       </div>
     );
   }
 
-
-addAliasWrapper: CreateAlias = async (
-  url: string,
-  alias: string,
-): Promise<CreateAliasResponse> => {
-  // Disable form when making a call
-  this.setState({
-    formDisabled: true,
-  })
-
-  const res: Promise<CreateAliasResponse> = addAlias(url, alias)
-  res.then((res) => {
+  addAliasWrapper: CreateAlias = async (
+    url: string,
+    alias: string
+  ): Promise<CreateAliasResponse> => {
+    // Disable form when making a call
     this.setState({
-      success: res.success,
-      error: res.error,
-      url: res.url,
-      alias: res.alias,
+      formDisabled: true,
     });
-  });
 
-  // Make sure we reset and allow the possibility to add more aliases
-  setTimeout(() => {
-    this.setState(initialAppState);
-  }, 5000)
-  return res;
-};
+    const res: Promise<CreateAliasResponse> = addAlias(url, alias);
+    res.then((res) => {
+      this.setState({
+        success: res.success,
+        error: res.error,
+        url: res.url,
+        alias: res.alias,
+      });
+    });
 
+    // Make sure we reset and allow the possibility to add more aliases
+    setTimeout(() => {
+      this.setState(initialAppState);
+    }, 5000);
+    return res;
+  };
 }
 
 export default App;
