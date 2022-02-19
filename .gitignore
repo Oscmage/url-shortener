@@ -1,6 +1,8 @@
 
 
-*.idea/*
+backend/.idea/*
+backend/.idea*
+*.idea*
 # Created by https://www.toptal.com/developers/gitignore/api/python,pycharm,visualstudiocode,node,react
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,pycharm,visualstudiocode,node,react
 
