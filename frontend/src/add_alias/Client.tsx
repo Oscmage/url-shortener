@@ -43,6 +43,5 @@ export const addAlias: CreateAlias = async (
           url: null,
         };
       }
-      
     });
 };
