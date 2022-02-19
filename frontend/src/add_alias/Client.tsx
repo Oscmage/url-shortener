@@ -28,11 +28,21 @@ export const addAlias: CreateAlias = async (
       };
     })
     .catch((err) => {
-      return {
-        success: false,
-        error: err.response.data.detail,
-        alias: null,
-        url: null,
-      };
+      if (err.response) {
+        return {
+          success: false,
+          error: err.response.data.detail,
+          alias: null,
+          url: null,
+        };
+      } else {
+        return {
+          success: false,
+          error: "Network error, is the backend on?",
+          alias: null,
+          url: null,
+        };
+      }
+      
     });
 };

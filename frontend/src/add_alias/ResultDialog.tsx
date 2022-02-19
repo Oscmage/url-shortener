@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { GET_ALIAS_URL } from "./Constants";
 
 interface ResultProps {
   success: boolean | null;
@@ -22,7 +23,7 @@ const ResultDialog: FC<ResultProps> = ({ success, error, url, alias }) => {
         </div>
         <div>
           <label>
-            Url: <a href={url}>{url}</a>
+            Url: <a href={GET_ALIAS_URL + alias}>{url}</a>
           </label>
         </div>
       </div>

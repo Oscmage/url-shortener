@@ -1,9 +1,10 @@
 from fastapi import FastAPI
+from starlette.responses import RedirectResponse
 
 import app.error_codes as error_codes
 from app.url.handler import UrlHandler
 from app.exception import InvalidUrlError, InvalidAliasLengthError, InvalidAliasError, AliasAlreadyTakenError
-from app.responses import PostAliasRequest, GetAliasResponse, PostAliasResponse
+from app.responses import PostAliasRequest, PostAliasResponse
 from app.url.interface import UrlInterface
 from app.url.repository import UrlRepository
 from fastapi.middleware.cors import CORSMiddleware
@@ -46,7 +47,8 @@ def start():
         if not url_entry:
             raise error_codes.NO_URL_FOUND
 
-        return GetAliasResponse.from_url_entry(url_entry)
+        return RedirectResponse(url=url_entry.url)
+
 
     @app.post("/v1/url")
     def post_alias(request: PostAliasRequest):
