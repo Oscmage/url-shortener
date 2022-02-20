@@ -23,7 +23,7 @@ const ResultDialog: FC<ResultProps> = ({ success, error, url, alias }) => {
         </div>
         <div>
           <label>
-            Url: <a href={GET_ALIAS_URL + alias}>{url}</a>
+            Url: <a href={GET_ALIAS_URL + alias}>{GET_ALIAS_URL + alias}</a>
           </label>
         </div>
       </div>
