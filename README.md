@@ -1,5 +1,9 @@
 # Url Shortener
 
+The url shortener frontend is written in React with Typescript. The primary reason for react is something I'm familar with. Other alternatives on the frontend I'd have a look at with more time is Flutter and Vue. The reasoning for Typescript is the great tooling that comes with it, in my experience it removes a lot of the obvious mistakes and improves development speed. 
+
+The backend is written in Python and uses [FastAPI](https://fastapi.tiangolo.com/) which allows for fast iterations and have gained quite a lot of traction in the Python community. One of the great things with FastAPI is the documentation that is auto-generated that comes with it.
+
 ## Running the application
 
 You can either run the frontend and backend individually or both of them through docker compose.
@@ -15,7 +19,6 @@ docker-compose up
 
 You can now reach the application on http://localhost:3000/
 If you'd like to directly call the backend you can now find documentation under http://localhost:8080/docs 
-
 
 ## Shortcuts
 

@@ -9,4 +9,5 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY ./app /code/app
 
+# TODO: Update to use gunicorn for production
 CMD ["uvicorn", "app.main:start", "--host", "0.0.0.0", "--port", "8080"]
